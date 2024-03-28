@@ -50,15 +50,15 @@ public class GeneralAnnouncementBoardDAO extends DAO {
         return announcementBoardList;
     }
 
-    public List<AnnouncementBoard> selectAnnouncementBoard(Member member) {
+    public List<AnnouncementBoard> selectAnnouncementBoard(String writer) {
         announcementBoardList = new ArrayList<>();
 
         try {
             connect();
 
-            String sql = "SELECT * FROM announcement_board WHERE user_id = ?";
+            String sql = "SELECT * FROM announcement_board WHERE writer = ?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, member.getUserId());
+            preparedStatement.setString(1, writer);
 
             resultSet = preparedStatement.executeQuery();
 

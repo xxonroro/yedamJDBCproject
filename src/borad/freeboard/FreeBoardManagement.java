@@ -60,7 +60,7 @@ public class FreeBoardManagement {
                         mangerSelectPost();
                         break;
                     case 3:
-                        managerDeletePost(member);
+                        managerDeletePost();
                         break;
                     case 4:
                         run = false;
@@ -179,11 +179,14 @@ public class FreeBoardManagement {
         isCompletion(result);
     }
 
-    private void managerDeletePost(Member member) {
+    private void managerDeletePost() {
+        System.out.print("작성자: ");
+        String writer = scanner.nextLine();
+
         System.out.print("삭제할 제목: ");
         String title = scanner.nextLine();
 
-        int result = managerFreeBoardDAO.managerDeleteFreeBoard(member, title);
+        int result = managerFreeBoardDAO.managerDeleteFreeBoard(writer, title );
         isCompletion(result);
     }
 

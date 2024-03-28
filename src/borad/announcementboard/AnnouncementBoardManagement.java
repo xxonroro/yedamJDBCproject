@@ -30,6 +30,9 @@ public class AnnouncementBoardManagement {
                         selectPostAll();
                         break;
                     case 2:
+                        managerSelectPost();
+                        break;
+                    case 3:
                         end();
                         break;
                     default:
@@ -66,9 +69,9 @@ public class AnnouncementBoardManagement {
     }
 
     private void generalAnnouncementBoardActiveMenu() {
-        System.out.println("================");
-        System.out.println("1.전체조회 | 2.이전");
-        System.out.println("================");
+        System.out.println("=================================");
+        System.out.println("1.전체조회 | 2.이름으로 조회 | 3.이전");
+        System.out.println("=================================");
     }
 
     private void managerAnnouncementBoardActiveMenu() {
@@ -107,6 +110,22 @@ public class AnnouncementBoardManagement {
 
     private void selectPost(Member member) {
         List<AnnouncementBoard> announcementBoardList = managerAnnouncementBoardDAO.selectAnnouncementBoard(member);
+
+        if (announcementBoardList.isEmpty()) {
+            System.out.println("게시글이 없습니다.");
+        } else {
+            for (AnnouncementBoard announcementBoard : announcementBoardList) {
+                System.out.println(announcementBoard);
+            }
+        }
+    }
+
+
+    private void managerSelectPost() {
+        System.out.print("관리자 이름: ");
+        String writer = scanner.nextLine();
+
+        List<AnnouncementBoard> announcementBoardList = generalAnnouncementBoardDAO.selectAnnouncementBoard(writer);
 
         if (announcementBoardList.isEmpty()) {
             System.out.println("게시글이 없습니다.");

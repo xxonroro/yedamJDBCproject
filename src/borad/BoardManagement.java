@@ -23,8 +23,8 @@ public class BoardManagement {
     }
 
     public void run(Member member) {
+        System.out.println(member.getName() + "님 환영합니다.");
         while (run) {
-            System.out.println(member.getName() + "님 환영합니다.");
             menuPrint();
             int menu = selectMenu();
 

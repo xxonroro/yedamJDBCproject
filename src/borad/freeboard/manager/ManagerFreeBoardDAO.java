@@ -147,15 +147,15 @@ public class ManagerFreeBoardDAO extends DAO {
     }
 
     // 자유 게시판의 게시글 삭제
-    public int managerDeleteFreeBoard(Member member, String title) {
+    public int managerDeleteFreeBoard(String writer, String title) {
         int result = 0;
 
         try {
             connect();
 
-            String sql = "DELETE FROM free_board WHERE user_id = ? AND title = ?";
+            String sql = "DELETE FROM free_board WHERE writer = ? AND title = ?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, member.getUserId());
+            preparedStatement.setString(1, writer);
             preparedStatement.setString(2, title);
 
             result = preparedStatement.executeUpdate();
